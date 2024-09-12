@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THÊM CÂU HỎI BY MINHTHU</title>
+    <style type="text/css">
+        /* banner */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("nen1.jpg");
+            background-size: cover;
+
+        }
+
+        #wrapper {
+            background-color: #805e7b;
+        }
+
+        #main-menu li:hover>a {
+            background-color: #dfb3e7;
+
+        }
+
+        #header {
+            background-color: rgb(203, 107, 195);
+
+        }
+
+        .container {
+            max-width: 100%;
+            /*margin: 0px auto;*/
+            margin-left: 830px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            justify-items: center;
+        }
+
+        #main-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+
+        }
+
+        #main-menu li {
+            position: relative;
+        }
+
+        #main-menu li a {
+            color: #f9fcfe;
+            display: block;
+            padding: 18px 25px;
+            text-decoration: none;
+
+        }
+
+        #main-menu ul.sub-menu {
+            position: absolute;
+            background-color: #805e7b;
+            padding: 0px 0px;
+            list-style: none;
+            width: 180px;
+            display: none;
+
+        }
+
+        #main-menu li:hover>ul.sub-menu {
+            display: block;
+        }
+
+        #main-menu ul.sub-menu a {
+            padding: 8px 10px;
+            left: 0;
+
+        }
+
+
+        .blocks-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+        }
+
+        .block {
+            text-align: center;
+        }
+
+        .block img {
+            width: 200px;
+            height: 200px;
+        }
+
+
+
+        #tong {
+            background-image: url("nencauhoi.jpeg");
+            background-size: cover;
+        }
+
+        .caumodau {
+            font-weight: bold;
+            font-family: "Comic Sans MS";
+            text-align: center;
+        }
+
+        .id1 {
+            margin-left: 50px;
+            color: rgb(181, 6, 6);
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body id="tong">
+    <header>
+        <!--Tạo menu đa cấp-->
+        <div id="wrapper">
+            <div id="header">
+                <nav class="container">
+                    <ul id="main-menu">
+                        <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+                        <li><a href="./html.html" class="a1">HTML</a></li>
+                        <li><a href="" class="a2">CSS</a></li>
+                        <li><a href="" class="a2">JAVASCRIPT</a></li>
+                        <li><a href="./tranglienhe.html" class="a2">LIÊN HỆ</a></li>
+                        <li><a href="" class="a2"><span id="welcome-message"></span></a>
+                            <ul class="sub-menu">
+                                <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+                            </ul>
+
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+    </header>
+
+    <h1 align="center" style="background-color: rgb(69, 223, 120);color:rgb(120, 17, 17);"> THÊM CÂU HỎI</h1>
+    <div class="caumodau"> Hãy cho chúng tôi thấy sự sáng tạo của bạn để buổi học thêm thú vị nhé!</div>
+    <br>
+    <!-- Loại câu hỏi nè-->
+    <form class="id1">
+        <label for="questionType">Loại câu hỏi:</label>
+        <select id="questionType" onchange="showQuestionForm()">
+            <option value="Một đáp án">Một đáp án</option>
+            <option value="Nhiều đáp án">Nhiều đáp án</option>
+            <option value="Điền vào chỗ trống">Điền vào chỗ trống</option>
+            <option value="Nối">Nối</option>
+        </select>
+    </form>
+    <br>
+    <!-- Tạo ô điền thông tin -->
+    <form id="questionForm" style="display: none;">
+        <label for="question">Câu hỏi:</label>
+        <input type="text" id="question"><br><br>
+
+        <label for="answer1">Đáp án 1:</label>
+        <input type="text" id="answer1"><br>
+        <br>
+        <label for="answer2">Đáp án 2:</label>
+        <input type="text" id="answer2"><br>
+        <br>
+        <label for="answer3">Đáp án 3:</label>
+        <input type="text" id="answer3"><br>
+        <br>
+        <label for="answer4">Đáp án 4:</label>
+        <input type="text" id="answer4"><br>
+        <br>
+        <label for="correctAnswer">Đáp án đúng:</label>
+        <input type="text" id="correctAnswer"><br><br>
+
+        <input type="button" value="Thêm câu hỏi" onclick="processForm()">
+    </form>
+
+    <br>
+    <!-- Tạo bảng để hiển thị số thông tin mong muốn-->
+    <table id="resultTable" border="1" height="50" width="100%">
+        <tr>
+            <th>Số thứ tự</th>
+            <th>Thời gian</th>
+            <th width="300">Câu hỏi</th>
+            <th>Loại câu hỏi</th>
+            <th>Đáp án</th>
+            <th>Đáp án đúng</th>
+            <th>Trạng thái</th>
+            <th>Tên người gửi câu hỏi</th>
+            <th>Duyệt câu hỏi (Admin)</th>
+            <th>Xóa</th>
+            <th>Sửa</th>
+
+
+        </tr>
+    </table>
+
+    <!--Sử dụng java đưa dữ liệu nhập xuống bảng-->
+    <script type="text/javascript">
+
+
+
+
+
+        function goToURL(url) {
+            window.location.href = url;
+        }
+
+
+        /// Lấy danh sách tài khoản từ Local Storage
+        var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+        // Lấy tên người dùng đã đăng nhập từ Local Storage
+        var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+        // Tìm tài khoản của người dùng đã đăng nhập
+        var loggedInAccount = accounts.find(function (account) {
+            return account.username === loggedInUsername;
+        });
+
+        // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+        if (loggedInAccount) {
+            // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+            var welcomeMessageElement = document.getElementById("welcome-message");
+            welcomeMessageElement.textContent = loggedInAccount.username;
+        } else {
+            // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+            console.log("Không tìm thấy tài khoản đã đăng nhập.");
+        }
+
+
+
+        // Kiểm tra trạng thái đăng nhập từ Local Storage
+        function checkLoginStatus() {
+            var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+            if (!isLoggedIn || isLoggedIn !== "true") {
+                // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+                alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+                window.location.href = 'dangnhap.html';
+            }
+        }
+
+        // Gọi hàm kiểm tra đăng nhập khi trang được tải
+        checkLoginStatus();
+
+        function logout() {
+            var confirmLogout = confirm('Bạn muốn đăng xuất tài khoản!');
+            if (confirmLogout) {
+                setLoggedOutStatus();
+                alert('Đã đăng xuất. Đang chuyển hướng đến trang đăng nhập...');
+                window.location.href = 'dangnhap.html';
+            }
+        }
+
+
+
+
+
+
+
+
+        // Hiển thị form câu hỏi tương ứng với loại câu hỏi được chọn
+        function showQuestionForm() {
+
+            // Lấy tên người đăng nhập từ Local Storage
+            var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+
+            var questionType = document.getElementById("questionType").value;
+            var questionForm = document.getElementById("questionForm");
+
+            if (questionType === "Một đáp án") {
+                questionForm.innerHTML = `
+                <label for="question">Câu hỏi:</label>
+                <input type="text" id="question"><br><br>
+
+                <label for="answer1">Đáp án 1:</label>
+                <input type="text" id="answer1"><br>
+                <br>
+                <label for="answer2">Đáp án 2:</label>
+                <input type="text" id="answer2"><br>
+                <br>
+                <label for="answer3">Đáp án 3:</label>
+                <input type="text" id="answer3"><br>
+                <br>
+                <label for="answer4">Đáp án 4:</label>
+                <input type="text" id="answer4"><br>
+                <br>
+                <label for="correctAnswer">Đáp án đúng:</label>
+                <input type="text" id="correctAnswer"><br><br>
+
+                <input type="button" value="Thêm câu hỏi" onclick="processForm()">
+            `;
+            } else if (questionType === "Nhiều đáp án") {
+                questionForm.innerHTML = `
+                <label for="question">Câu hỏi:</label>
+                <input type="text" id="question"><br><br>
+
+                <label for="answer1">Đáp án 1:</label>
+                <input type="text" id="answer1"><br>
+                <br>
+                <label for="answer2">Đáp án 2:</label>
+                <input type="text" id="answer2"><br>
+                <br>
+                <label for="answer3">Đáp án 3:</label>
+                <input type="text" id="answer3"><br>
+                <br>
+                <label for="answer4">Đáp án 4:</label>
+                <input type="text" id="answer4"><br>
+                <br>
+                <label for="correctAnswer">Đáp án đúng:</label>
+                <input type="text" id="correctAnswer"><br><br>
+                <label for="correctAnswer">Đáp án đúng:</label>
+                <input type="text" id="correctAnswer"><br><br>
+
+                <input type="button" value="Thêm câu hỏi" onclick="processForm()">
+            `;
+            } else if (questionType === "Điền vào chỗ trống") {
+                questionForm.innerHTML = `
+                <label for="question">Câu hỏi:</label>
+                <input type="text" id="question"><br><br>
+
+                <label for="answer">Đáp án:</label>
+                <input type="text" id="answer"><br><br>
+
+                <input type="button" value="Thêm câu hỏi" onclick="processForm()">
+            `;
+            } else if (questionType === "Nối") {
+                questionForm.innerHTML = `
+                <label for="question">Câu hỏi:</label>
+                <input type="text" id="question"><br><br>
+
+                <label for="leftOption1">Lựa chọn trái 1:</label>
+                <input type="text" id="leftOption1"><br>
+                <br>
+                <label for="leftOption2">Lựa chọn trái 2:</label>
+                <input type="text" id="leftOption2"><br>
+                <br>
+                <label for="leftOption3">Lựa chọn trái 3:</label>
+                <input type="text" id="leftOption3"><br>
+                <br>
+                <label for="leftOption4">Lựa chọn trái 4:</label>
+                <input type="text" id="leftOption4"><br>
+                <br>
+                <label for="rightOption1">Lựa chọn phải 1:</label>
+                <input type="text" id="rightOption1"><br>
+                <br>
+                <label for="rightOption2">Lựa chọn phải 2:</label>
+                <input type="text" id="rightOption2"><br>
+                <br>
+                <label for="rightOption3">Lựa chọn phải 3:</label>
+                <input type="text" id="rightOption3"><br
+                ><br>
+                <label for="rightOption4">Lựa chọn phải 4:</label>
+                <input type="text" id="rightOption4"><br>
+                <br>
+
+                <input type="button" value="Thêm câu hỏi" onclick="processForm()">
+            `;
+            }
+
+            questionForm.style.display = "block";
+        }
+
+
+
+
+
+        // Xử lý form câu hỏi và hiển thị kết quả trong bảng
+        function processForm() {
+            var questionType = document.getElementById("questionType").value;
+            var question = document.getElementById("question").value;
+
+            // Lấy thời gian hiện tại
+            var currentTime = new Date().toLocaleString();
+
+
+            var table = document.getElementById("resultTable");
+            var row = table.insertRow(-1);
+
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = table.rows.length - 1;
+
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = currentTime;  // Hiển thị thời gian trong bảng
+
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = question;
+
+            var cell4 = row.insertCell(3);
+            cell4.innerHTML = questionType;
+
+            var cell5 = row.insertCell(4);
+            var answer;
+            var correctAnswer;
+            if (questionType === "Một đáp án") {
+                // answer = document.getElementById("answer").value;
+                // correctAnswer = answer;
+                var answer1 = document.getElementById("answer1").value;
+                var answer2 = document.getElementById("answer2").value;
+                var answer3 = document.getElementById("answer3").value;
+                var answer4 = document.getElementById("answer4").value;
+                answer = answer1 + ", " + answer2 + ", " + answer3 + ", " + answer4;
+                correctAnswer = document.getElementById("correctAnswer").value;
+            } else if (questionType === "Nhiều đáp án") {
+                var answer1 = document.getElementById("answer1").value;
+                var answer2 = document.getElementById("answer2").value;
+                var answer3 = document.getElementById("answer3").value;
+                var answer4 = document.getElementById("answer4").value;
+                answer = answer1 + ", " + answer2 + ", " + answer3 + ", " + answer4;
+                correctAnswer = document.getElementById("correctAnswer").value;
+            } else if (questionType === "Điền vào chỗ trống") {
+                answer = document.getElementById("answer").value;
+                correctAnswer = answer;
+            } else if (questionType === "Nối") {
+                var leftOption1 = document.getElementById("leftOption1").value;
+                var leftOption2 = document.getElementById("leftOption2").value;
+                var leftOption3 = document.getElementById("leftOption3").value;
+                var leftOption4 = document.getElementById("leftOption4").value;
+                var rightOption1 = document.getElementById("rightOption1").value;
+                var rightOption2 = document.getElementById("rightOption2").value;
+                var rightOption3 = document.getElementById("rightOption3").value;
+                var rightOption4 = document.getElementById("rightOption4").value;
+
+                answer = leftOption1 + " - " + rightOption1 + ", " + leftOption2 + " - " + rightOption2 + ", " + leftOption3 + " - " + rightOption3 + ", " + leftOption4 + " - " + rightOption4;
+                correctAnswer = answer;
+            }
+
+            cell5.innerHTML = answer;
+
+            var cell6 = row.insertCell(5);
+            cell6.innerHTML = correctAnswer;
+
+            var cell7 = row.insertCell(6);
+            cell7.innerHTML = "Chưa duyệt";
+
+
+
+
+            // Lưu câu hỏi vào Local Storage
+            var questionData = {
+                questionType: questionType,
+                question: question,
+                answer: answer,
+                correctAnswer: correctAnswer,
+                senderName: loggedInAccount.username,
+                timestamp: currentTime  // Lưu thông tin thời gian
+            };
+
+            var cell8 = row.insertCell(7);
+            cell8.innerHTML = questionData.senderName;
+
+            // Kiểm tra nếu Local Storage đã có dữ liệu câu hỏi
+            var existingQuestions = localStorage.getItem("questions");
+            if (existingQuestions) {
+                // Nếu đã có dữ liệu, chuyển đổi thành mảng và thêm câu hỏi mới vào
+                var parsedQuestions = JSON.parse(existingQuestions);
+                parsedQuestions.push(questionData);
+                localStorage.setItem("questions", JSON.stringify(parsedQuestions));
+            } else {
+                // Nếu chưa có dữ liệu, tạo một mảng mới chứa câu hỏi và lưu vào Local Storage
+                var newQuestions = [questionData];
+                localStorage.setItem("questions", JSON.stringify(newQuestions));
+            }
+
+            var cell10 = row.insertCell(9);
+            cell10.innerHTML = "<button onclick='deleteQuestion(this)'>Xóa</button>";
+
+            var cell11 = row.insertCell(10);
+            cell11.innerHTML = "<button onclick='editQuestion(this)'>Sửa</button>";
+
+            // Reset form
+            document.getElementById("questionForm").reset();
+        }
+
+
+
+
+        // Hiển thị lại câu hỏi sau khi trang được reset
+        function showQuestionsOnPageLoad() {
+            // Kiểm tra xem Local Storage có dữ liệu câu hỏi hay không
+            var existingQuestions = localStorage.getItem("questions");
+            if (existingQuestions) {
+                // Nếu có dữ liệu, chuyển đổi thành mảng và tạo lại form câu hỏi
+                var parsedQuestions = JSON.parse(existingQuestions);
+                for (var i = 0; i < parsedQuestions.length; i++) {
+                    var questionData = parsedQuestions[i];
+                    createQuestionForm(questionData);
+
+                    // Cập nhật trạng thái từ Local Storage
+                    var table = document.getElementById("resultTable");
+                    var statusCell = table.rows[i + 1].cells[6];
+                    statusCell.innerHTML = questionData.status || "Chưa duyệt";
+                }
+            }
+            var statusCell = table.rows[i + 1].cells[1];
+            statusCell.innerHTML = questionData.timestamp;
+        }
+
+
+
+
+
+
+
+
+        // Đoạn mã sửa đổi
+        var table = document.getElementById("resultTable");
+
+        function showQuestionsOnPageLoad() {
+            // Kiểm tra xem Local Storage có dữ liệu câu hỏi hay không
+            var existingQuestions = localStorage.getItem("questions");
+            if (existingQuestions) {
+                // Nếu có dữ liệu, chuyển đổi thành mảng và tạo lại form câu hỏi
+                var parsedQuestions = JSON.parse(existingQuestions);
+                for (var i = 0; i < parsedQuestions.length; i++) {
+                    var questionData = parsedQuestions[i];
+                    createQuestionForm(questionData);
+                }
+            }
+        }
+
+        function createQuestionForm(questionData) {
+            var row = table.insertRow(-1);
+
+            // Tạo các ô dữ liệu
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = table.rows.length - 1;
+
+            var cell2 = row.insertCell(1);
+            cell2.innerHTML = questionData.timestamp;
+
+            var cell3 = row.insertCell(2);
+            cell3.innerHTML = questionData.question;
+
+            var cell4 = row.insertCell(3);
+            cell4.innerHTML = questionData.questionType;
+
+            var cell5 = row.insertCell(4);
+            cell5.innerHTML = questionData.answer;
+
+            var cell6 = row.insertCell(5);
+            cell6.innerHTML = questionData.correctAnswer;
+
+            var cell7 = row.insertCell(6);
+            cell7.innerHTML = questionData.status || "Chưa duyệt";
+
+            var cell8 = row.insertCell(7);
+            cell8.innerHTML = questionData.senderName;
+
+            var cell9 = row.insertCell(8);
+            if (loggedInAccount.role === "admin") {
+                if (questionData.status === "Đã duyệt") {
+                    cell9.innerHTML = "<button onclick='unapproveQuestion(this)'>Không Duyệt</button>";
+                } else {
+                    cell9.innerHTML = "<button onclick='approveQuestion(this)'>Duyệt</button>";
+                }
+            } else {
+                cell9.innerHTML = "Không có quyền";
+                cell9.style.display = "none";
+            }
+
+            var cell10 = row.insertCell(9);
+            cell10.innerHTML = "<button onclick='deleteQuestion(this)'>Xóa</button>";
+
+            var cell11 = row.insertCell(10);
+            cell11.innerHTML = "<button onclick='editQuestion(this)'>Sửa</button>";
+        }
+
+        function deleteQuestion(button) {
+            var rowIndex = button.parentNode.parentNode.rowIndex;
+            var existingQuestions = JSON.parse(localStorage.getItem("questions"));
+            var questionData = existingQuestions[rowIndex - 1];
+
+            // Kiểm tra quyền trước khi xóa
+            if (loggedInAccount.role === "admin" || loggedInAccount.username === questionData.senderName) {
+                table.deleteRow(rowIndex);
+                existingQuestions.splice(rowIndex - 1, 1);
+                localStorage.setItem("questions", JSON.stringify(existingQuestions));
+            } else {
+                alert("Bạn không có quyền xóa câu hỏi này.");
+            }
+        }
+
+        function editQuestion(button) {
+            var rowIndex = button.parentNode.parentNode.rowIndex;
+            var existingQuestions = JSON.parse(localStorage.getItem("questions"));
+            var questionData = existingQuestions[rowIndex - 1];
+
+            // Kiểm tra quyền trước khi sửa
+            if (loggedInAccount.role === "admin" || loggedInAccount.username === questionData.senderName) {
+                // Hiển thị lại form câu hỏi với dữ liệu đã có
+                showQuestionForm();
+                document.getElementById("questionType").value = questionData.questionType;
+                document.getElementById("question").value = questionData.question;
+
+                // Xử lý dữ liệu đáp án tùy thuộc vào loại câu hỏi
+                if (questionData.questionType === "Một đáp án") {
+                    var answers = questionData.answer.split(", ");
+                    document.getElementById("answer1").value = answers[0];
+                    document.getElementById("answer2").value = answers[1];
+                    document.getElementById("answer3").value = answers[2];
+                    document.getElementById("answer4").value = answers[3];
+                    document.getElementById("correctAnswer").value = questionData.correctAnswer;
+                } else if (questionData.questionType === "Nhiều đáp án") {
+                    // Xử lý dữ liệu cho loại câu hỏi Nhiều đáp án
+                    var answers = questionData.answer.split(", ");
+                    document.getElementById("answer1").value = answers[0];
+                    document.getElementById("answer2").value = answers[1];
+                    document.getElementById("answer3").value = answers[2];
+                    document.getElementById("answer4").value = answers[3];
+                    document.getElementById("correctAnswer").value = questionData.correctAnswer;
+                } else if (questionData.questionType === "Điền vào chỗ trống") {
+                    // Xử lý dữ liệu cho loại câu hỏi Điền vào chỗ trống
+                    document.getElementById("answer").value = questionData.correctAnswer;
+                } else if (questionData.questionType === "Nối") {
+                    // Xử lý dữ liệu cho loại câu hỏi Nối
+                    var answers = questionData.answer.split(", ");
+                    document.getElementById("leftOption1").value = answers[0].split(" - ")[0];
+                    document.getElementById("leftOption2").value = answers[1].split(" - ")[0];
+                    document.getElementById("leftOption3").value = answers[2].split(" - ")[0];
+                    document.getElementById("leftOption4").value = answers[3].split(" - ")[0];
+                    document.getElementById("rightOption1").value = answers[0].split(" - ")[1];
+                    document.getElementById("rightOption2").value = answers[1].split(" - ")[1];
+                    document.getElementById("rightOption3").value = answers[2].split(" - ")[1];
+                    document.getElementById("rightOption4").value = answers[3].split(" - ")[1];
+                }
+
+                // Thêm trường role vào đối tượng questionData
+                document.getElementById("questionForm").setAttribute("data-role", loggedInAccount.role);
+            } else {
+                alert("Bạn không có quyền sửa câu hỏi này.");
+            }
+        }
+
+
+
+
+
+        function unapproveQuestion(button) {
+            var rowIndex = button.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("resultTable");
+            var statusCell = table.rows[rowIndex].cells[6];
+            // Cập nhật trạng thái và lưu vào Local Storage
+            statusCell.innerHTML = "Chưa duyệt";
+            var existingQuestions = JSON.parse(localStorage.getItem("questions"));
+            existingQuestions[rowIndex - 1].status = "Chưa duyệt";
+            localStorage.setItem("questions", JSON.stringify(existingQuestions));
+        }
+
+
+        // Sự kiện khi cửa sổ được tải lại
+        window.onload = function () {
+            displayQuestionsFromLocalStorage();
+        };
+
+
+        function approveQuestion(button) {
+            var rowIndex = button.parentNode.parentNode.rowIndex;
+            var table = document.getElementById("resultTable");
+            var statusCell = table.rows[rowIndex].cells[6]; // Lấy ô của trạng thái
+
+            // Cập nhật trạng thái và lưu vào Local Storage
+            statusCell.innerHTML = "Đã duyệt";
+            var existingQuestions = JSON.parse(localStorage.getItem("questions"));
+            existingQuestions[rowIndex - 1].status = "Đã duyệt";
+            localStorage.setItem("questions", JSON.stringify(existingQuestions));
+        }
+
+        // Gọi hàm hiển thị lại câu hỏi khi trang được reset hoặc tải lại
+        window.addEventListener("load", showQuestionsOnPageLoad);
+    </script>
+</body>
+
+</html>

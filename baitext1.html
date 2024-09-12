@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Baitext1</title>
+  <style yype="text/css">
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("nen1.jpg");
+      background-size: cover;
+    }
+
+
+    #wrapper {
+      background-color: #805e7b;
+    }
+
+    #main-menu li:hover>a {
+      background-color: #dfb3e7;
+
+    }
+
+    #header {
+      background-color: rgb(203, 107, 195);
+
+    }
+
+    .container {
+      max-width: 100%;
+      /*margin: 0px auto;*/
+      margin-left: 830px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      justify-items: center;
+    }
+
+    #main-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    #main-menu li {
+      position: relative;
+    }
+
+    #main-menu li a {
+      color: #f9fcfe;
+      display: block;
+      padding: 18px 25px;
+      text-decoration: none;
+
+    }
+
+    #main-menu ul.sub-menu {
+      position: absolute;
+      background-color: #805e7b;
+      padding: 0px 0px;
+      list-style: none;
+      width: 180px;
+      display: none;
+
+    }
+
+    #main-menu li:hover>ul.sub-menu {
+      display: block;
+    }
+
+    #main-menu ul.sub-menu a {
+      padding: 8px 10px;
+      left: 0;
+
+    }
+
+
+    .blocks-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 60px;
+    }
+
+    .block {
+      text-align: center;
+    }
+
+    .block img {
+      width: 200px;
+      height: 200px;
+    }
+
+    .id1 {
+      text-align: center;
+      color: rgb(121, 30, 44);
+    }
+  </style>
+</head>
+
+<body class="body">
+
+  <form>
+    <header>
+      <!--Tạo menu đa cấp-->
+      <div id="wrapper">
+        <div id="header">
+          <nav class="container">
+            <ul id="main-menu">
+              <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+              <li><a href="./html.html" class="a1">HTML</a></li>
+              <li><a href="" class="a2">CSS</a></li>
+              <li><a href="" class="a2">JAVASCRIPT</a></li>
+              <li><a href="./tranglienhe.html" class="a2">LIÊN HỆ</a></li>
+              <li><a href="" class="a2"><span id="welcome-message"></span></a>
+                <ul class="sub-menu">
+                  <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+                </ul>
+
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+    </header>
+
+    <h1 class="id1">Bài text 1</h1>
+    <h3>Câu 1: Định nghĩa một danh sách drop-down được sử dụng trong form.</h3>
+    <input type="radio" name="question12" value="false"> A. &lt;legend&gt;<br>
+    <input type="radio" name="question12" value="true"> B. &lt;select&gt;<br>
+    <input type="radio" name="question12" value="false"> C. &lt;label&gt;<br>
+    <input type="radio" name="question12" value="false"> D. &lt;fieldset&gt;<br>
+
+    <h3>Câu 2: Chỉ định một danh sách của các option được định nghĩa trước cho việc điều khiển nhập liệu?</h3>
+    <input type="radio" name="question13" value="false"> A. &lt;keygen&gt;<br>
+    <input type="radio" name="question13" value="false"> B. &lt;output&gt;<br>
+    <input type="radio" name="question13" value="true"> C. &lt;datalist&gt;<br>
+
+    <h3>Câu 3: HTML viết tắt của từ gì?</h3>
+    <input type="radio" name="question14" value="true"> A. Hypertext Markup Language.<br>
+    <input type="radio" name="question14" value="false"> B. Markup Hypertext Language.<br>
+    <input type="radio" name="question14" value="false"> C. Markup Language Hypertext.<br>
+
+    <h3>Câu 4: Trong HTML, thuộc tính nào được sử dụng để gộp ô (cell) theo hàng (row) trong một bảng?</h3>
+    <input type="radio" name="question15" value="true"> A. rowspan<br>
+    <input type="radio" name="question15" value="false"> B. colspan<br>
+    <input type="radio" name="question15" value="false"> C. merge<br>
+    <input type="radio" name="question15" value="false"> D. combine<br>
+
+    <h3>Câu 5: Trong HTML, phần tử nào được sử dụng để tạo một nút radio button?</h3>
+    <input type="radio" name="question16" value="false"> A. &lt;input type="checkbox"&gt;<br>
+    <input type="radio" name="question16" value="true"> B. &lt;input type="radio"&gt;<br>
+    <input type="radio" name="question16" value="false"> C. &lt;input type="text"&gt;<br>
+    <input type="radio" name="question16" value="false"> D. &lt;input type="submit"&gt;<br>
+
+    <h3>Câu 6: Trong HTML, thuộc tính nào được sử dụng để xác định một trường nhập (input field) là bắt buộc phải được
+      điền vào?</h3>
+    <input type="radio" name="question17" value="true"> A. required<br>
+    <input type="radio" name="question17" value="false"> B. mandatory<br>
+    <input type="radio" name="question17" value="false"> C. validate<br>
+    <input type="radio" name="question17" value="false"> D. necessary<br>
+
+    <h3>Câu 7: Trong HTML, thuộc tính nào được sử dụng để xác định một trường nhập (input field) là bắt buộc phải được
+      điền vào?</h3>
+    <input type="radio" name="question18" value="false"> A. required<br>
+    <input type="radio" name="question18" value="false"> B. mandatory<br>
+    <input type="radio" name="question18" value="true"> C. readonly<br>
+    <input type="radio" name="question18" value="false"> D. necessary<br>
+
+    <h3>Câu 8: Phần tử HTML nào được sử dụng để tạo một nút radio button?</h3>
+    <input type="radio" name="question19" value="false"> A. &lt;radio&gt;<br>
+    <input type="radio" name="question19" value="true"> B. &lt;input type="radio"&gt;<br>
+    <input type="radio" name="question19" value="false"> C. &lt;button type="radio"&gt;<br>
+    <input type="radio" name="question19" value="false"> D. &lt;input button="radio"&gt;<br>
+
+    <h3>Câu 9: Thuộc tính nào trong thẻ &lt;selector&gt; được sử dụng để chọn các phần tử con trực tiếp của phần tử cha?
+    </h3>
+    <input type="radio" name="question20" value="false"> A. first-child<br>
+    <input type="radio" name="question20" value="false"> B. nth-child<br>
+    <input type="radio" name="question20" value="false"> C. child-of<br>
+    <input type="radio" name="question20" value="true"> D. direct-child<br>
+
+    <h3>Câu 10: Phần tử HTML nào được sử dụng để tạo một đoạn văn bản được đánh dấu là inline?</h3>
+    <input type="radio" name="question21" value="false"> A. &lt;p&gt;<br>
+    <input type="radio" name="question21" value="true"> B. &lt;span&gt;<br>
+    <input type="radio" name="question21" value="false"> C. &lt;div&gt;<br>
+    <input type="radio" name="question21" value="false"> D. &lt;a&gt;<br>
+
+    <br>
+    <button onclick="checkAnswers()">Nộp bài</button>
+  </form>
+</body>
+<script type="text/javascript">
+  function displayWelcomeMessage() {
+    // Lấy danh sách tài khoản từ Local Storage
+    var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+
+    // Lấy tên người dùng đã đăng nhập từ Local Storage
+    var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+    // Tìm tài khoản của người dùng đã đăng nhập
+    var loggedInAccount = accounts.find(function (account) {
+      return account.username === loggedInUsername;
+    });
+
+    // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+    if (loggedInAccount) {
+      // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+      var welcomeMessageElement = document.getElementById("welcome-message");
+      welcomeMessageElement.textContent = loggedInAccount.username;
+
+
+    } else {
+      // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+      console.log("Không tìm thấy tài khoản đã đăng nhập.");
+    }
+  }
+
+  // Gọi hàm khi trang được tải
+  displayWelcomeMessage();
+
+
+  // Lưu trạng thái đăng nhập vào Local Storage
+  function setLoggedInStatus() {
+    localStorage.setItem('isLoggedIn', 'true');
+  }
+
+  // Lưu trạng thái đăng xuất vào Local Storage
+  function setLoggedOutStatus() {
+    localStorage.setItem('isLoggedIn', 'false');
+  }
+
+  function checkLoginStatus() {
+    var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (!isLoggedIn || isLoggedIn !== "true") {
+      // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+      alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+      window.location.href = 'dangnhap.html';
+    }
+  }
+
+  // Gọi hàm kiểm tra đăng nhập khi trang được tải
+  checkLoginStatus();
+
+  function logout() {
+    var confirmLogout = confirm('Bạn muốn đăng xuất tài khoản!');
+    if (confirmLogout) {
+      setLoggedOutStatus();
+      alert('Đã đăng xuất. Đang chuyển hướng đến trang đăng nhập...');
+      window.location.href = 'dangnhap.html';
+    }
+  }
+
+
+  // Hàm này sẽ kiểm tra các câu trả lời của người dùng và tính số câu đúng
+  function checkAnswers() {
+    // Lấy các phần tử input trong biểu mẫu
+    var inputs = document.getElementsByTagName("input");
+    // Khởi tạo biến để đếm số câu đúng
+    var correct = 0;
+    // Duyệt qua các phần tử input
+    for (var i = 0; i < inputs.length; i++) {
+      // Nếu phần tử input là một nút radio và được chọn
+      if (inputs[i].type == "radio" && inputs[i].checked) {
+        // Nếu giá trị của nút radio là đúng
+        if (inputs[i].value == "true") {
+          // Tăng biến đếm số câu đúng lên 1
+          correct++;
+        }
+      }
+    }
+    // Hiển thị số câu đúng cho người dùng
+    alert("Bạn đã trả lời đúng " + correct + " trên 10 câu hỏi.");
+    window.location.href = 'lamtext.html';
+  }
+
+</script>
+
+</html>

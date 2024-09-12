@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Trang Web</title>
+  <style>
+    /* CSS để tạo giao diện */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("nen1.jpg");
+      background-size: cover;
+
+    }
+
+    #wrapper {
+      background-color: #805e7b;
+    }
+
+    #main-menu li:hover>a {
+      background-color: #dfb3e7;
+
+    }
+
+    #header {
+      background-color: rgb(203, 107, 195);
+
+    }
+
+    .container {
+      max-width: 100%;
+      /*margin: 0px auto;*/
+      margin-left: 830px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      justify-items: center;
+    }
+
+    #main-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    #main-menu li {
+      position: relative;
+    }
+
+    #main-menu li a {
+      color: #f9fcfe;
+      display: block;
+      padding: 18px 25px;
+      text-decoration: none;
+
+    }
+
+    #main-menu ul.sub-menu {
+      position: absolute;
+      background-color: #805e7b;
+      padding: 0px 0px;
+      list-style: none;
+      width: 180px;
+      display: none;
+
+    }
+
+    #main-menu li:hover>ul.sub-menu {
+      display: block;
+    }
+
+    #main-menu ul.sub-menu a {
+      padding: 8px 10px;
+      left: 0;
+
+    }
+
+
+    .blocks-container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 60px;
+    }
+
+    .block {
+      text-align: center;
+    }
+
+    .block img {
+      width: 200px;
+      height: 200px;
+    }
+
+    /* thông tin người làm */
+
+
+    #thongtinlienlac {
+      display: flex;
+      padding: 20px 40px;
+      justify-content: space-between;
+      justify-items: center;
+      max-width: 1000px;
+      margin: 0px auto;
+      font-weight: 500;
+      /* color: #fff; */
+    }
+
+    .anhd {
+      height: 100px;
+      width: 150px;
+      border-top-right-radius: 10%;
+      border-bottom-left-radius: 10%;
+      border-top-left-radius: 10%;
+      border-bottom-right-radius: 10%;
+    }
+
+    #thongtintu {
+      align-items: center;
+      box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
+
+    }
+
+    #thongtinthu {
+      align-items: center;
+      box-shadow: 2px 5px 6px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!--Tạo menu đa cấp-->
+    <div id="wrapper">
+      <div id="header">
+        <nav class="container">
+          <ul id="main-menu">
+            <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+            <li><a href="./html.html" class="a1">HTML</a></li>
+            <li><a href="" class="a2">CSS</a></li>
+            <li><a href="" class="a2">JAVASCRIPT</a></li>
+            <li><a href="./tranglienhe.html" class="a2">LIÊN HỆ</a></li>
+            <li><a href="" class="a2"><span id="welcome-message"></span></a>
+              <ul class="sub-menu">
+                <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+              </ul>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+  </header>
+
+  <div class="blocks-container">
+    <div class="block">
+      <a href="#" onclick="goToURL('html.html')">
+        <img src="html_image.jpg"><br>
+        <br>
+        <button><b>Vào học HTML</b></button>
+      </a>
+    </div>
+
+    <div class="block">
+      <a href="#">
+        <img src="css_image.jpg"><br>
+        <br>
+        <button><b>Vào học CSS</b></button>
+      </a>
+    </div>
+
+    <div class="block">
+      <a href="#">
+        <img src="javascript_image.jpg"><br>
+        <br>
+        <button><b>Vào học Javascript</b></button>
+      </a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <hr>
+  <h3 align="center">NỀN TẢNG PHÁT TRIỂN WED</h3>
+  <hr>
+
+  <h3 align="center">LIÊN HỆ VỚI CHÚNG TÔI</h3>
+  <hr>
+  <br>
+  <!-- thông tin sinh viên  -->
+
+  <div id="thongtinlienlac">
+    <div id="thongtintu">
+      <img src="" alt="ảnh Tú" class="anhd">
+      <p><b>Nguyễn Anh B</p>
+      <p>SĐT: 1234567890</b></p>
+      <a href=""><b>Liên hệ: Facebook</b></a>
+      <p><b>Địa chỉ: </b></p>
+    </div>
+
+
+    <div id="thongtinthu">
+      <img src="" alt="Ảnh " class="anhd">
+      <p>
+        <b> Nguyễn thị b</b>
+      <p><b>SĐT: 1234567890</b></p>
+      </p>
+      <a href=""><b>Liên hệ: Facebook</b></a>
+      <p><b>Địa chỉ: địa chỉ</b></p>
+    </div>
+  </div>
+
+
+  <script>
+
+
+
+
+    function goToURL(url) {
+      window.location.href = url;
+    }
+
+
+    function displayWelcomeMessage() {
+      // Lấy danh sách tài khoản từ Local Storage
+      var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+
+      // Lấy tên người dùng đã đăng nhập từ Local Storage
+      var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+      // Tìm tài khoản của người dùng đã đăng nhập
+      var loggedInAccount = accounts.find(function (account) {
+        return account.username === loggedInUsername;
+      });
+
+      // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+      if (loggedInAccount) {
+        // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+        var welcomeMessageElement = document.getElementById("welcome-message");
+        welcomeMessageElement.textContent = loggedInAccount.username;
+
+
+      } else {
+        // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+        console.log("Không tìm thấy tài khoản đã đăng nhập.");
+      }
+    }
+
+    // Gọi hàm khi trang được tải
+    displayWelcomeMessage();
+
+
+    // Lưu trạng thái đăng nhập vào Local Storage
+    function setLoggedInStatus() {
+      localStorage.setItem('isLoggedIn', 'true');
+    }
+
+    // Lưu trạng thái đăng xuất vào Local Storage
+    function setLoggedOutStatus() {
+      localStorage.setItem('isLoggedIn', 'false');
+    }
+
+    function checkLoginStatus() {
+      var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || isLoggedIn !== "true") {
+        // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+        alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+    // Gọi hàm kiểm tra đăng nhập khi trang được tải
+    checkLoginStatus();
+
+    function logout() {
+      var confirmLogout = confirm('Bạn muốn đăng xuất tài khoản!');
+      if (confirmLogout) {
+        setLoggedOutStatus();
+        alert('Đã đăng xuất. Đang chuyển hướng đến trang đăng nhập...');
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+
+
+
+  </script>
+
+</body>
+
+</html>

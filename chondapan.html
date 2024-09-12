@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style yype="text/css">
+    .body {
+      background-image: url("nencauhoi.jpeg");
+      background-size: cover;
+    }
+
+    .id1 {
+      text-align: center;
+      color: rgb(121, 30, 44);
+    }
+  </style>
+
+</head>
+
+<body class="body">
+  <h1 class="id1">Bộ câu hỏi trắc nghiệm về HTML</h1>
+  <form>
+    <h1 id="countdown">05:00</h1>
+    <h3>Câu 1: Định nghĩa một danh sách drop-down được sử dụng trong form.</h3>
+    <input type="radio" name="question12" value="false"> A. &lt;legend&gt;<br>
+    <input type="radio" name="question12" value="true"> B. &lt;select&gt;<br>
+    <input type="radio" name="question12" value="false"> C. &lt;label&gt;<br>
+    <input type="radio" name="question12" value="false"> D. &lt;fieldset&gt;<br>
+
+    <h3>Câu 2: Chỉ định một danh sách của các option được định nghĩa trước cho việc điều khiển nhập liệu?</h3>
+    <input type="radio" name="question13" value="false"> A. &lt;keygen&gt;<br>
+    <input type="radio" name="question13" value="false"> B. &lt;output&gt;<br>
+    <input type="radio" name="question13" value="true"> C. &lt;datalist&gt;<br>
+
+    <h3>Câu 3: HTML viết tắt của từ gì?</h3>
+    <input type="radio" name="question14" value="true"> A. Hypertext Markup Language.<br>
+    <input type="radio" name="question14" value="false"> B. Markup Hypertext Language.<br>
+    <input type="radio" name="question14" value="false"> C. Markup Language Hypertext.<br>
+
+    <h3>Câu 4: Trong HTML, thuộc tính nào được sử dụng để gộp ô (cell) theo hàng (row) trong một bảng?</h3>
+    <input type="radio" name="question15" value="true"> A. rowspan<br>
+    <input type="radio" name="question15" value="false"> B. colspan<br>
+    <input type="radio" name="question15" value="false"> C. merge<br>
+    <input type="radio" name="question15" value="false"> D. combine<br>
+
+    <h3>Câu 5: Trong HTML, phần tử nào được sử dụng để tạo một nút radio button?</h3>
+    <input type="radio" name="question16" value="false"> A. &lt;input type="checkbox"&gt;<br>
+    <input type="radio" name="question16" value="true"> B. &lt;input type="radio"&gt;<br>
+    <input type="radio" name="question16" value="false"> C. &lt;input type="text"&gt;<br>
+    <input type="radio" name="question16" value="false"> D. &lt;input type="submit"&gt;<br>
+
+    <h3>Câu 6: Trong HTML, thuộc tính nào được sử dụng để xác định một trường nhập (input field) là bắt buộc phải được
+      điền vào?</h3>
+    <input type="radio" name="question17" value="true"> A. required<br>
+    <input type="radio" name="question17" value="false"> B. mandatory<br>
+    <input type="radio" name="question17" value="false"> C. validate<br>
+    <input type="radio" name="question17" value="false"> D. necessary<br>
+
+    <h3>Câu 7: Trong HTML, thuộc tính nào được sử dụng để xác định một trường nhập (input field) là bắt buộc phải được
+      điền vào?</h3>
+    <input type="radio" name="question18" value="false"> A. required<br>
+    <input type="radio" name="question18" value="false"> B. mandatory<br>
+    <input type="radio" name="question18" value="true"> C. readonly<br>
+    <input type="radio" name="question18" value="false"> D. necessary<br>
+
+    <h3>Câu 8: Phần tử HTML nào được sử dụng để tạo một nút radio button?</h3>
+    <input type="radio" name="question19" value="false"> A. &lt;radio&gt;<br>
+    <input type="radio" name="question19" value="true"> B. &lt;input type="radio"&gt;<br>
+    <input type="radio" name="question19" value="false"> C. &lt;button type="radio"&gt;<br>
+    <input type="radio" name="question19" value="false"> D. &lt;input button="radio"&gt;<br>
+
+    <h3>Câu 9: Thuộc tính nào trong thẻ &lt;selector&gt; được sử dụng để chọn các phần tử con trực tiếp của phần tử cha?
+    </h3>
+    <input type="radio" name="question20" value="false"> A. first-child<br>
+    <input type="radio" name="question20" value="false"> B. nth-child<br>
+    <input type="radio" name="question20" value="false"> C. child-of<br>
+    <input type="radio" name="question20" value="true"> D. direct-child<br>
+
+    <h3>Câu 10: Phần tử HTML nào được sử dụng để tạo một đoạn văn bản được đánh dấu là inline?</h3>
+    <input type="radio" name="question21" value="false"> A. &lt;p&gt;<br>
+    <input type="radio" name="question21" value="true"> B. &lt;span&gt;<br>
+    <input type="radio" name="question21" value="false"> C. &lt;div&gt;<br>
+    <input type="radio" name="question21" value="false"> D. &lt;a&gt;<br>
+
+    <br>
+    <input type="submit" value="Submit" onclick="checkAnswers()">
+  </form>
+
+
+
+  <script>
+    // Hàm này sẽ kiểm tra các câu trả lời của người dùng và tính số câu đúng
+    function checkAnswers() {
+      // Lấy các phần tử input trong biểu mẫu
+      var inputs = document.getElementsByTagName("input");
+      // Khởi tạo biến để đếm số câu đúng
+      var correct = 0;
+      // Duyệt qua các phần tử input
+      for (var i = 0; i < inputs.length; i++) {
+        // Nếu phần tử input là một nút radio và được chọn
+        if (inputs[i].type == "radio" && inputs[i].checked) {
+          // Nếu giá trị của nút radio là đúng
+          if (inputs[i].value == "true") {
+            // Tăng biến đếm số câu đúng lên 1
+            correct++;
+          }
+        }
+      }
+      // Hiển thị số câu đúng cho người dùng
+      alert("Bạn đã trả lời đúng " + correct + " trên 10 câu hỏi.");
+
+    }
+
+    // Đặt thời gian ban đầu (5 phút = 300 giây)
+    var timeRemaining = 300;
+
+    // Cập nhật thời gian cứ sau 1 giây
+    var countdown = setInterval(function () {
+      // Giảm thời gian còn lại
+      timeRemaining--;
+
+      // Tính toán phút và giây
+      var minutes = Math.floor(timeRemaining / 60);
+      var seconds = timeRemaining % 60;
+
+      // Định dạng thời gian hiển thị
+      var displayMinutes = minutes < 10 ? "0" + minutes : minutes;
+      var displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+
+      // Hiển thị thời gian còn lại
+      document.getElementById("countdown").innerHTML = displayMinutes + ":" + displaySeconds;
+
+      // Kiểm tra nếu thời gian đã hết
+      if (timeRemaining <= 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "00:00";
+      }
+    }, 1000);
+
+
+
+    ////kiểm tra trạng thái đăng nhập
+
+    // Trong mã JavaScript của mỗi trang cần kiểm tra đăng nhập
+    function checkLoginStatus() {
+      var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || isLoggedIn !== "true") {
+        // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+        alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+        window.location.href = 'DANGNHAP.html';
+      }
+    }
+
+    // Gọi hàm kiểm tra đăng nhập khi trang được tải
+    checkLoginStatus();
+  </script>
+</body>
+
+</html>

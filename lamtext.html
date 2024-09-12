@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Làm text</title>
+  <style type="text/css">
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    #main-menu li:hover>a {
+      background-color: #dfb3e7;
+
+    }
+
+    #header {
+      background-color: rgb(203, 107, 195);
+
+    }
+
+    .container {
+      max-width: 100%;
+      /*margin: 0px auto;*/
+      margin-left: 830px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      justify-items: center;
+    }
+
+    #main-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    #main-menu li {
+      position: relative;
+    }
+
+    #main-menu li a {
+      color: #f3f6f7;
+      display: block;
+      padding: 18px 25px;
+      text-decoration: none;
+
+    }
+
+    #main-menu ul.sub-menu {
+      position: absolute;
+      background-color: #805e7b;
+      padding: 0px 0px;
+      list-style: none;
+      width: 180px;
+      display: none;
+
+    }
+
+    #main-menu li:hover>ul.sub-menu {
+      display: block;
+    }
+
+    #main-menu ul.sub-menu a {
+      padding: 8px 10px;
+      left: 0;
+
+    }
+
+    .block {
+      background-color: #f2f2f2;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+    }
+
+    h2 {
+      color: #b41111;
+      font-size: 24px;
+      margin-top: 0;
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <!--Tạo menu đa cấp-->
+    <div id="wrapper">
+      <div id="header">
+        <nav class="container">
+          <ul id="main-menu">
+            <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+            <li><a href="./html.html" class="a1">HTML</a></li>
+            <li><a href="" class="a2">CSS</a></li>
+            <li><a href="" class="a2">JAVASCRIPT</a></li>
+            <li><a href="./tranglienhe.html">LIÊN HỆ</a></li>
+            <li><a href="" class="a2"><span id="welcome-message"></span></a>
+              <ul class="sub-menu">
+                <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+              </ul>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+  </header>
+  <br>
+
+  <div class="block">
+    <h2 onclick="baitext1()"><u>Bài text 1</u></h2>
+    <p>Trắc nghiệm 10 câu hỏi</p>
+  </div>
+
+  <div class="block">
+    <h2 onclick="baitext2()"><u>Bài text 2</u></h2>
+    <p>Trắc nghiệm 10 câu hỏi</p>
+  </div>
+
+  <div class="block">
+    <h2 onclick="baitext3()"><u>Bài text 3</u></h2>
+    <p>Trắc nghiệm 10 câu hỏi Đ/S </p>
+  </div>
+</body>
+<script type="text/javascript">
+
+
+
+
+  function HTML() {
+    window.location.href = 'trangchu.html';
+  }
+  function baitext1() {
+    window.location.href = 'baitext1.html';
+  }
+  function baitext2() {
+    window.location.href = 'baitext2.html';
+  }
+  function baitext3() {
+    window.location.href = 'baitext3.html';
+  }
+
+  function displayWelcomeMessage() {
+    // Lấy danh sách tài khoản từ Local Storage
+    var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+
+    // Lấy tên người dùng đã đăng nhập từ Local Storage
+    var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+    // Tìm tài khoản của người dùng đã đăng nhập
+    var loggedInAccount = accounts.find(function (account) {
+      return account.username === loggedInUsername;
+    });
+
+    // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+    if (loggedInAccount) {
+      // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+      var welcomeMessageElement = document.getElementById("welcome-message");
+      welcomeMessageElement.textContent = loggedInAccount.username;
+
+
+    } else {
+      // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+      console.log("Không tìm thấy tài khoản đã đăng nhập.");
+    }
+  }
+
+  // Gọi hàm khi trang được tải
+  displayWelcomeMessage();
+
+
+  // Lưu trạng thái đăng nhập vào Local Storage
+  function setLoggedInStatus() {
+    localStorage.setItem('isLoggedIn', 'true');
+  }
+
+  // Lưu trạng thái đăng xuất vào Local Storage
+  function setLoggedOutStatus() {
+    localStorage.setItem('isLoggedIn', 'false');
+  }
+
+  function checkLoginStatus() {
+    var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    if (!isLoggedIn || isLoggedIn !== "true") {
+      // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+      alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+      window.location.href = 'dangnhap.html';
+    }
+  }
+
+  // Gọi hàm kiểm tra đăng nhập khi trang được tải
+  checkLoginStatus();
+
+  function logout() {
+    var confirmLogout = confirm('Bạn muốn đăng xuất tài khoản!');
+    if (confirmLogout) {
+      setLoggedOutStatus();
+      alert('Đã đăng xuất. Đang chuyển hướng đến trang đăng nhập...');
+      window.location.href = 'dangnhap.html';
+    }
+  }
+
+</script>
+
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Trang Web</title>
+  <style>
+    /* CSS để tạo giao diện */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("nen1.jpg");
+      background-size: cover;
+    }
+
+    #main-menu li:hover>a {
+      background-color: #dfb3e7;
+
+    }
+
+    #header {
+      background-color: rgb(203, 107, 195);
+
+    }
+
+    .container {
+      max-width: 100%;
+      /*margin: 0px auto;*/
+      margin-left: 830px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      justify-items: center;
+    }
+
+    #main-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    #main-menu li {
+      position: relative;
+    }
+
+    #main-menu li a {
+      color: #f9fcfe;
+      display: block;
+      padding: 18px 25px;
+      text-decoration: none;
+
+    }
+
+    #main-menu ul.sub-menu {
+      position: absolute;
+      background-color: #805e7b;
+      padding: 0px 0px;
+      list-style: none;
+      width: 180px;
+      display: none;
+
+    }
+
+    #main-menu li:hover>ul.sub-menu {
+      display: block;
+    }
+
+    #main-menu ul.sub-menu a {
+      padding: 8px 10px;
+      left: 0;
+
+    }
+
+    .box {
+      width: 600px;
+      height: 30px;
+      background-color: #dfb3e7;
+      border-radius: 10px;
+      box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.3);
+      /* chú thích bên dưới*/
+      margin-top: 40px;
+      margin-left: 25%;
+    }
+
+    .container2 {
+      display: flex;
+      justify-content: space-around;
+
+      padding: 20px;
+    }
+
+    .block {
+      width: 25%;
+      height: 250px;
+      background-color: #ebb9b9;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: center;
+
+    }
+
+    .block h2 {
+      font-size: 40px;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <!--Tạo menu đa cấp-->
+    <div id="wrapper">
+      <div id="header">
+        <nav class="container">
+          <ul id="main-menu">
+            <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+            <li><a href="#" class="a1" onclick="HTML()">HTML</a></li>
+            <li><a href="#" class="a2" onclick="CSS()">CSS</a></li>
+            <li><a href="#" class="a2" onclick="JAVASCRIPT()">JAVASCRIPT</a></li>
+            <li><a href="./tranglienhe.html" class="a2">LIÊN HỆ</a></li>
+            <li><a href="#" class="a2"><span id="welcome-message"></span></a>
+              <ul class="sub-menu">
+                <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+              </ul>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+  <div class="box" align="center" style="font-weight: bold;font-size: 24px; font-style: italic;"> Chào mừng bạn đến phần
+    HTML</div>
+  <div class="container2">
+
+    <div class="block">
+      <h2> Luyện Tập</h2>
+      <div class="vaophan"><button> <b><a href="./lamtext.html">Vào</a></b> </button></div>
+    </div>
+    <div class="block">
+      <h2> Đóng góp</h2>
+      <div class="vaophan"><button><b><a href="./themCauHoi3.html">Vào</a></b></button></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+
+function displayWelcomeMessage() {
+      // Lấy danh sách tài khoản từ Local Storage
+      var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+
+      // Lấy tên người dùng đã đăng nhập từ Local Storage
+      var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+      // Tìm tài khoản của người dùng đã đăng nhập
+      var loggedInAccount = accounts.find(function (account) {
+        return account.username === loggedInUsername;
+      });
+
+      // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+      if (loggedInAccount) {
+        // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+        var welcomeMessageElement = document.getElementById("welcome-message");
+        welcomeMessageElement.textContent = loggedInAccount.username;
+
+
+      } else {
+        // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+        console.log("Không tìm thấy tài khoản đã đăng nhập.");
+      }
+    }
+
+    // Gọi hàm khi trang được tải
+    displayWelcomeMessage();
+
+
+    // Lưu trạng thái đăng nhập vào Local Storage
+    function setLoggedInStatus() {
+      localStorage.setItem('isLoggedIn', 'true');
+    }
+
+    // Lưu trạng thái đăng xuất vào Local Storage
+    function setLoggedOutStatus() {
+      localStorage.setItem('isLoggedIn', 'false');
+    }
+
+    function checkLoginStatus() {
+      var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || isLoggedIn !== "true") {
+        // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+        alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+    // Gọi hàm kiểm tra đăng nhập khi trang được tải
+    checkLoginStatus();
+
+    function logout() {
+      var confirmLogout = confirm('Bạn muốn đăng xuất tài khoản!');
+      if (confirmLogout) {
+        setLoggedOutStatus();
+        alert('Đã đăng xuất. Đang chuyển hướng đến trang đăng nhập...');
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+
+
+
+    function HTML() {
+      window.location.href = 'index.html';
+    }
+    window.addEventListener('DOMContentLoaded', (event) => {
+      const username = localStorage.getItem('username');
+      if (username) {
+        const welcomeMessage = document.getElementById('welcome-message');
+        welcomeMessage.textContent = `${username}`;
+      }
+    });
+
+
+    // Trong mã JavaScript của mỗi trang cần kiểm tra đăng nhập
+    function checkLoginStatus() {
+      var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || isLoggedIn !== "true") {
+        // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+        alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+    // Gọi hàm kiểm tra đăng nhập khi trang được tải
+    checkLoginStatus();
+
+
+
+  </script>
+</body>
+
+</html>
+<!--Độ dịch chuyển ngang: 0
+Độ dịch chuyển dọc: 2px
+Độ mờ: 6px
+Màu sắc: rgba(0, 0, 0, 0.3) (màu đen với độ trong suốt 30%)-->

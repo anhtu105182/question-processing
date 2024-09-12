@@ -1,0 +1,23 @@
+body{
+    background-image: url(./nen.jpg);
+    background-size: cover;
+    
+    color:black;
+}
+.id1{
+    text-align:center;
+}
+#tong{
+    height:500px;
+    width:300px;
+    margin-top: 180px;
+    margin-left: 470px;
+}
+.form{
+    text-align: center;
+    border: 1px solid #a14f4f; /* Định dạng khung viền */
+    padding: 20px; /* Khoảng cách giữa nội dung và khung viền */
+    border-radius: 5px; /* Bo tròn các góc của khung */
+    box-shadow: 0 0 5px rgba(114, 72, 72, 0.3); /* Đổ bóng cho khung */
+    
+}

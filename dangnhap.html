@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Form Đăng Nhập</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="app.css">
+
+</head>
+
+<body>
+  <div id="tong">
+    <form onsubmit="return validateForm()" class="form">
+      <h2 class="id1">Đăng Nhập</h2>
+      <label for="username">Tên tài khoản</label>
+      <input type="text" id="username" name="username" placeholder="username" required><br><br>
+
+      <label for="password">Mật khẩu</label><br>
+      <input type="password" id="password" name="password" placeholder="mật khẩu" required><br><br>
+
+      <input type="submit" value="Đăng nhập"> <br>
+      <br>
+      <a href="./dangki.html">Đăng kí</a>
+    </form>
+  </div>
+
+
+  <script type="text/javascript">
+
+
+
+
+    function validateForm() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+
+      if (username === "" || password === "") {
+        alert("Vui lòng điền đầy đủ thông tin đăng nhập!");
+        return false;
+      }
+
+      // Lấy danh sách tài khoản từ localStorage
+      var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+      // Kiểm tra xem tài khoản có tồn tại hay không
+      var existingAccount = accounts.find(function (account) {
+        return account.username === username && account.password === password;
+      });
+
+      if (existingAccount) {
+        setLoggedInStatus(); // Di chuyển lên đây
+        alert("Đăng nhập thành công!");
+        window.location.href = 'index.html';
+        localStorage.setItem('loggedInUsername', username); // Lưu tên đăng nhập
+        return false;
+      } else {
+        alert("Tên tài khoản hoặc mật khẩu không chính xác!");
+        return false;
+      }
+    }
+
+    // Lưu trạng thái đăng nhập vào Local Storage
+    function setLoggedInStatus(username) {
+      localStorage.setItem('isLoggedIn', 'true');
+      
+      // Gọi hàm hiển thị tên đăng nhập
+    }
+
+
+  </script>
+</body>
+
+</html>

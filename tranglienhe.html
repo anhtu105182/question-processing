@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Thông tin liên hệ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      padding: 20px;
+
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url("nen1.jpg");
+      background-size: cover;
+    }
+
+    #main-menu li:hover>a {
+      background-color: #dfb3e7;
+
+    }
+
+    #header {
+      background-color: rgb(203, 107, 195);
+
+    }
+
+    .container {
+      max-width: 100%;
+      /*margin: 0px auto;*/
+      margin-left: 830px;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      justify-items: center;
+    }
+
+    #main-menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+    }
+
+    #main-menu li {
+      position: relative;
+    }
+
+    #main-menu li a {
+      color: #f9fcfe;
+      display: block;
+      padding: 18px 25px;
+      text-decoration: none;
+
+    }
+
+    #main-menu ul.sub-menu {
+      position: absolute;
+      background-color: #805e7b;
+      padding: 0px 0px;
+      list-style: none;
+      width: 180px;
+      display: none;
+
+    }
+
+    #main-menu li:hover>ul.sub-menu {
+      display: block;
+    }
+
+    #main-menu ul.sub-menu a {
+      padding: 8px 10px;
+      left: 0;
+
+    }
+
+    .fancy-text {
+      font-family: 'Arial', sans-serif;
+      font-size: 48px;
+      font-weight: bold;
+      color: #63aec1;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin: 0 0 10px;
+    }
+
+    .contact-info {
+      background-color: #f3f3f3;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-info h2 {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .contact-info p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+    .contact-info a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .address {
+      font-style: italic;
+    }
+
+    .icon {
+      margin-right: 5px;
+    }
+
+    .facebook-icon {
+      color: #3b5998;
+    }
+
+    .phone-icon {
+      color: #28a745;
+    }
+
+    .location-icon {
+      color: #dc3545;
+    }
+
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .contact-container>div {
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <!--Tạo menu đa cấp-->
+    <div id="wrapper">
+      <div id="header">
+        <nav class="container">
+          <ul id="main-menu">
+            <li><a href="./index.html" class="a1">TRANG CHỦ</a></li>
+            <li><a href="./html.html" class="a1">HTML</a></li>
+            <li><a href="" class="a2">CSS</a></li>
+            <li><a href="" class="a2">JAVASCRIPT</a></li>
+            <li><a href="./tranglienhe.html" class="a2">LIÊN HỆ</a></li>
+            <li><a href="" class="a2"><span id="welcome-message"></span></a>
+              <ul class="sub-menu">
+                <li><a href="#" onclick="logout()">Đăng xuất</a></li>
+
+              </ul>
+
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+  </header>
+
+  <div class="fancy-text">Liên hệ với chúng tôi</div>
+
+  <div class="contact-container">
+    <div class="contact-info" style="background-color: #FCE4EC;">
+      <h2>Nguyễn Anh Tú</h2>
+      <div style="display: flex; align-items: center;">
+        <i class="fas fa-phone icon phone-icon"></i>
+        <p style="margin: 0;">SĐT: 0383137092</p>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <i class="fab fa-facebook icon facebook-icon"></i>
+        <p style="margin: 0;">Liên hệ: <a href="https://www.facebook.com/profile.php?id=100045897710727">Facebook</a>
+        </p>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <i class="fas fa-map-marker-alt icon location-icon"></i>
+        <p class="address" style="margin: 0;">Địa chỉ: 38 Phố Miếu Đầm, Mễ Trì, Nam Từ Liêm, Hà Nội</p>
+      </div>
+    </div>
+
+    <div class="contact-info" style="background-color: #E3F2FD;">
+      <h2>Nguyễn Thị Minh Thư</h2>
+      <div style="display: flex; align-items: center;">
+        <i class="fas fa-phone icon phone-icon"></i>
+        <p style="margin: 0;">SĐT: 0393810287</p>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <i class="fab fa-facebook icon facebook-icon"></i>
+        <p style="margin: 0;">Liên hệ: <a href="https://www.facebook.com/profile.php?id=100027895430153">Facebook</a>
+        </p>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <i class="fas fa-map-marker-alt icon location-icon"></i>
+        <p class="address" style="margin: 0;">Địa chỉ: Tòa A5 KTX Trường Đại Học Sư Phạm Hà Nội</p>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+
+    /// Lấy danh sách tài khoản từ Local Storage
+    var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+    // Lấy tên người dùng đã đăng nhập từ Local Storage
+    var loggedInUsername = localStorage.getItem("loggedInUsername");
+
+    // Tìm tài khoản của người dùng đã đăng nhập
+    var loggedInAccount = accounts.find(function (account) {
+      return account.username === loggedInUsername;
+    });
+
+    // Kiểm tra xem tài khoản đã đăng nhập có tồn tại không
+    if (loggedInAccount) {
+      // Hiển thị tên người dùng trong phần tử có id là "welcome-message"
+      var welcomeMessageElement = document.getElementById("welcome-message");
+      welcomeMessageElement.textContent = loggedInAccount.username;
+    } else {
+      // Xử lý khi không tìm thấy tài khoản đã đăng nhập
+      console.log("Không tìm thấy tài khoản đã đăng nhập.");
+    }
+
+
+
+    // Kiểm tra trạng thái đăng nhập từ Local Storage
+    function checkLoginStatus() {
+      var isLoggedIn = localStorage.getItem("isLoggedIn");
+
+      if (!isLoggedIn || isLoggedIn !== "true") {
+        // Người dùng chưa đăng nhập hoặc đã đăng xuất, chuyển hướng đến trang đăng nhập
+        alert("Bạn chưa đăng nhập. Đang chuyển hướng đến trang đăng nhập...");
+        window.location.href = 'dangnhap.html';
+      }
+    }
+
+    // Gọi hàm kiểm tra đăng nhập khi trang được tải
+    checkLoginStatus();
+
+
+  </script>
+</body>
+
+</html>

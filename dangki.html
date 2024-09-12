@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="app2.css">
+    <style>
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tong">
+        <form id="registrationForm" class="form">
+            <h2 id="id1"> Đăng kí</h2>
+            <div>
+                <label for="username">Tên tài khoản</label><br>
+                <input type="text" id="username" name="username" placeholder="username">
+                <span id="usernameError" class="error"></span>
+            </div>
+            <br>
+            <div>
+                <label for="password">Mật khẩu</label><br>
+                <input type="password" id="password" name="password" placeholder="password">
+                <span id="passwordError" class="error"></span>
+            </div>
+            <br>
+            <div>
+                <label for="confirmPassword">Nhập lại mật khẩu:</label><br>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="nhập lại mật khẩu">
+                <span id="confirmPasswordError" class="error"></span>
+            </div>
+            <br>
+            <div>
+                <label for="role">Vai trò:</label><br>
+                <select id="role" name="role">
+                    <option value="người gửi câu hỏi">Người gửi câu hỏi</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <button type="button" onclick="validateForm()">Đăng kí</button>
+            </div>
+            <br>
+            <a href="./dangnhap.html">Đăng nhập</a>
+        </form>
+    </div>
+    <script>
+        function validateForm() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirmPassword").value;
+            var role = document.getElementById("role").value;
+
+            var usernameError = document.getElementById("usernameError");
+            var passwordError = document.getElementById("passwordError");
+            var confirmPasswordError = document.getElementById("confirmPasswordError");
+
+            var isValid = true;
+            // localStorage.setItem("loggedInUsername", username);
+            // Kiểm tra yêu cầu về username
+            if (username === "" || username.length < 5 || /[^a-zA-Z0-9]/.test(username)) {
+                isValid = false;
+                usernameError.textContent = "Username không hợp lệ (ít nhất 5 ký tự và không chứa ký tự đặc biệt)";
+            } else {
+                usernameError.textContent = "";
+            }
+
+            // Kiểm tra yêu cầu về mật khẩu
+            if (password === "" || password.length < 8) {
+                isValid = false;
+                passwordError.textContent = "Mật khẩu không hợp lệ (ít nhất 8 ký tự)";
+            } else {
+                passwordError.textContent = "";
+            }
+
+            // Kiểm tra xác nhận mật khẩu
+            if (confirmPassword !== password) {
+                isValid = false;
+                confirmPasswordError.textContent = "Mật khẩu nhập lại không trùng khớp";
+            } else {
+                confirmPasswordError.textContent = "";
+            }
+
+            if (isValid) {
+                // Lấy danh sách tài khoản từ localStorage
+                var accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+
+                // Kiểm tra xem tài khoản đã tồn tại hay chưa
+                var existingAccount = accounts.find(function (account) {
+                    return account.username === username;
+                });
+
+                if (existingAccount) {
+                    alert("Tài khoản đã tồn tại! Vui lòng chọn tên khác.");
+                    return false;
+                }
+
+                // Thêm tài khoản mới vào danh sách
+                var newAccount = {
+                    username: username,
+                    password: password,
+                    role: role
+                };
+                accounts.push(newAccount);
+
+                // Cập nhật danh sách tài khoản trong localStorage
+                localStorage.setItem("accounts", JSON.stringify(accounts));
+                
+                
+
+                alert("Đăng kí thành công!");
+                window.location.href = "dangnhap.html";
+            }
+
+            return isValid;
+        }
+    </script>
+</body>
+
+</html>
